@@ -59,7 +59,9 @@ public class Account
       return accountNumber;  
    } // end method getAccountNumber
    
-   
+   public Account getAccount() {
+	   return this;
+   }
    
 } // end class Account
 

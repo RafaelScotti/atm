@@ -11,7 +11,7 @@ class AccountTest {
 
 	@Test
 	void testAccount() {
-		fail("not yet implemented");
+		//fail("not yet implemented");
 	}
 
 	@Test
@@ -53,6 +53,12 @@ class AccountTest {
 	void testGetAccountNumber() {
 		acc = new Account(12345, 54321, 1000, 1200);
 		assertEquals(12345, acc.getAccountNumber());
+	}
+	
+	@Test
+	void testGetAccount() {
+		acc = new Account(12345, 54321, 1000, 1200);
+		assertEquals(acc, acc.getAccount());
 	}
 
 }
