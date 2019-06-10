@@ -1,3 +1,4 @@
+package com.atm;
 // Withdrawal.java
 // Represents a withdrawal ATM transaction
 
