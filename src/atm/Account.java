@@ -49,6 +49,7 @@ public class Account
    // debits an amount from the account
    public void debit(double amount)
    {
+	   
       availableBalance -= amount; // subtract from available balance
       totalBalance -= amount; // subtract from total balance
    } // end method debit
