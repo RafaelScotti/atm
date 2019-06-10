@@ -16,7 +16,9 @@ class AccountTest {
 
 	@Test
 	void testValidatePIN() {
-		fail("Not yet implemented");
+		acc = new Account(12345, 54321, 1000, 1200);
+		assertEquals(true, acc.validatePIN(54321));
+		assertEquals(false, acc.validatePIN(54322));
 	}
 
 	@Test
