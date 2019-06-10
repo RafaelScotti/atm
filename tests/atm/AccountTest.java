@@ -7,13 +7,11 @@ import org.junit.jupiter.api.Test;
 
 class AccountTest {
 
-	@BeforeAll
-	static void setUpBeforeClass() throws Exception {
-	}
+	Account acc;
 
 	@Test
 	void testAccount() {
-		fail("Not yet implemented");
+		fail("not yet implemented");
 	}
 
 	@Test
@@ -23,27 +21,36 @@ class AccountTest {
 
 	@Test
 	void testGetAvailableBalance() {
-		fail("Not yet implemented");
+		acc = new Account(12345, 54321, 1000, 1200);
+		assertEquals(1000, acc.getAvailableBalance());
 	}
 
 	@Test
 	void testGetTotalBalance() {
-		fail("Not yet implemented");
+		acc = new Account(12345, 54321, 1000, 1200);
+		assertEquals(1200, acc.getTotalBalance());
 	}
 
 	@Test
 	void testCredit() {
-		fail("Not yet implemented");
+		acc = new Account(12345, 54321, 1000, 1200);
+		acc.credit(100);
+		assertEquals(1000, acc.getAvailableBalance());
+		assertEquals(1300, acc.getTotalBalance());
 	}
 
 	@Test
 	void testDebit() {
-		fail("Not yet implemented");
+		acc = new Account(12345, 54321, 1000, 1200);
+		acc.debit(100);
+		assertEquals(900, acc.getAvailableBalance());
+		assertEquals(1100, acc.getTotalBalance());
 	}
 
 	@Test
 	void testGetAccountNumber() {
-		fail("Not yet implemented");
+		acc = new Account(12345, 54321, 1000, 1200);
+		assertEquals(12345, acc.getAccountNumber());
 	}
 
 }
