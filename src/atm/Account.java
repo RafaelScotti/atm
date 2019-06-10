@@ -1,4 +1,4 @@
-package com.atm;
+package atm;
 // Account.java
 // Represents a bank account
 

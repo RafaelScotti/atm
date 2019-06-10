@@ -1,4 +1,4 @@
-package com.atm;
+package atm;
 // Transaction.java
 // Abstract superclass Transaction represents an ATM transaction
 

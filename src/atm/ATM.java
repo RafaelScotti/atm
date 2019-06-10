@@ -1,4 +1,4 @@
-package com.atm;
+package atm;
 // ATM.java
 // Represents an automated teller machine
 

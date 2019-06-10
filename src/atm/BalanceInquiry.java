@@ -1,4 +1,4 @@
-package com.atm;
+package atm;
 // BalanceInquiry.java
 // Represents a balance inquiry ATM transaction
 

@@ -1,4 +1,4 @@
-package com.atm;
+package atm;
 // BankDatabase.java
 // Represents the bank account information database 
 
