@@ -2,7 +2,7 @@ package atm;
 // BankDatabase.java
 // Represents the bank account information database 
 
-public class BankDatabase
+public class BankDatabase 
 {
    private Account accounts[]; // array of Accounts
    
@@ -30,6 +30,7 @@ public class BankDatabase
 
    // determine whether user-specified account number and PIN match
    // those of an account in the database
+   
    public boolean authenticateUser(int userAccountNumber, int userPIN)
    {
       // attempt to retrieve the account with the account number
