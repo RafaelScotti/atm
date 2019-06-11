@@ -82,11 +82,8 @@ public class ATM
 			//SHOW MENU
 			MainMenu.display();
 			int mainMenuSelection = MainMenu.getOption(keypad);
-
-			//FOLLOW CHOICE
-
-			// show main menu and get user selection
-
+			
+			
 			// decide how to proceed based on user's menu selection
 			switch (mainMenuSelection)
 			{

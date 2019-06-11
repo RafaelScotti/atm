@@ -6,8 +6,7 @@ public class MainMenu {
 	private static final int withdraw = 2;
 	private static final int deposit = 3;
 	private static final int exit = 4;
-	
-	
+
 	public static void display() {
 		System.out.println("\nMain menu:");
 		System.out.println("1 - View my balance");
@@ -15,10 +14,12 @@ public class MainMenu {
 		System.out.println("3 - Deposit funds");
 		System.out.println("4 - Exit\n");
 		
+		
 	}
 	
 	public static int getOption(Keypad k) {
 		System.out.println("Enter a choice: ");
+		
 		switch (k.getInput()) {
 		case 1:
 			return balance;
@@ -31,7 +32,8 @@ public class MainMenu {
 		default:
 			return -1;
 			
-		}
-		
+		}	
 	}
+	
+
 }
