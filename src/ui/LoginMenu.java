@@ -3,27 +3,16 @@ package ui;
 import atm.IKeypad;
 import atm.Keypad;
 
-public class LoginMenu implements Menu{
+public class LoginMenu extends TipoMenu{
 
 	IKeypad keypad = new Keypad();
 	
 	
 	@Override
 	public int show() {
-		
-		
-	}
-
-	@Override
-	public void addItem(String title) {
-		// TODO Auto-generated method stub
+		return 0;
 		
 	}
 
-	@Override
-	public void removeItem(String title) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

@@ -1,9 +1,12 @@
 package ui;
 
-public interface Menu {
+public class Menu {
+	private TipoMenu tipoMenu;
+	public Menu(TipoMenu tm) {
+		this.tipoMenu = tm;
+	}
 	
-	int show();
-	void addItem(String title);
-	void removeItem(String title);
-	
+	public int show() {
+		return tipoMenu.show();
+	}
 }

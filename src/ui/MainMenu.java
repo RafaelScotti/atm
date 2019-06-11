@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import atm.IKeypad;
 import atm.Keypad;
 
-public class MainMenu implements Menu {
+public class MainMenu extends TipoMenu {
 
 	private IKeypad keypad = new Keypad();
 	ArrayList<String> mainMenuList = new ArrayList<>();
@@ -29,15 +29,5 @@ public class MainMenu implements Menu {
 		return op;
 	}
 
-	@Override
-	public void addItem(String title) {
-		// TODO Auto-generated method stub
-	}
-
-	@Override
-	public void removeItem(String title) {
-		// TODO Auto-generated method stub
-	}
-	
 
 }

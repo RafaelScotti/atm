@@ -1,5 +1,6 @@
 package atm;
 
+import ui.LoginMenu;
 import ui.MainMenu;
 import ui.Menu;
 
@@ -10,12 +11,12 @@ public class ATM
 {
 	private boolean userAuthenticated; // whether user is authenticated
 	private int currentAccountNumber; // current user's account number
-	private IScreen screen; // ATM's screen
 	private IKeypad keypad; // ATM's keypad
 	private CashDispenser cashDispenser; // ATM's cash dispenser
 	private DepositSlot depositSlot; // ATM's deposit slot
 	private BankDatabase bankDatabase; // account information database
 	private Menu mainMenu;
+	private Menu loginMenu;
 
 	// constants corresponding to main menu options
 	private static final int BALANCE_INQUIRY = 1;
@@ -26,10 +27,12 @@ public class ATM
 	// no-argument ATM constructor initializes instance variables
 	public ATM() 
 	{
-		mainMenu = new MainMenu();
+		mainMenu = new Menu(new MainMenu());
+		loginMenu = new Menu(new LoginMenu());
+		
 		userAuthenticated = false; // user is not authenticated to start
 		currentAccountNumber = 0; // no current account number to start
-		screen = new Screen(); // create screen
+		
 		keypad = new Keypad(); // create keypad 
 		cashDispenser = new CashDispenser(); // create cash dispenser
 		depositSlot = new DepositSlot(); // create deposit slot
@@ -95,23 +98,23 @@ public class ATM
 			switch (mainMenuSelection){
 			// user chose to perform one of three transaction types
 				case BALANCE_INQUIRY: 
-					currentTransaction = new BalanceInquiry(currentAccountNumber, screen, bankDatabase);
+					currentTransaction = new BalanceInquiry(currentAccountNumber, bankDatabase);
 					currentTransaction.execute();
 					break;
 				case WITHDRAWAL: 
-					currentTransaction = new Withdrawal(currentAccountNumber, screen, bankDatabase, keypad, cashDispenser);
+					currentTransaction = new Withdrawal(currentAccountNumber, bankDatabase, cashDispenser);
 					currentTransaction.execute();
 					break;
 				case DEPOSIT:
-					currentTransaction = new Deposit(currentAccountNumber, screen, bankDatabase, keypad, depositSlot);
+					currentTransaction = new Deposit(currentAccountNumber, bankDatabase, keypad, depositSlot);
 					currentTransaction.execute();
 					break;					
 				case EXIT: // user chose to terminate session
-					screen.displayMessageLine("\nExiting the system...");
+					System.out.println("\nExiting the system...");
 					userExited = true; // this ATM session should end
 					break;
 				default: // user did not enter an integer from 1-4
-					screen.displayMessageLine("\nYou did not enter a valid selection. Try again.");
+					System.out.println("\nYou did not enter a valid selection. Try again.");
 					break;
 			} // end switch
 		} // end while
