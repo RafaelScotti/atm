@@ -106,7 +106,7 @@ public class ATM
 					currentTransaction.execute();
 					break;
 				case DEPOSIT:
-					currentTransaction = new Deposit(currentAccountNumber, bankDatabase, keypad, depositSlot);
+					currentTransaction = new Deposit(currentAccountNumber, bankDatabase, depositSlot);
 					currentTransaction.execute();
 					break;					
 				case EXIT: // user chose to terminate session

@@ -11,14 +11,14 @@ public class Deposit extends Transaction
 
    // Deposit constructor
    public Deposit(int userAccountNumber, 
-      BankDatabase atmBankDatabase, IKeypad atmKeypad, 
+      BankDatabase atmBankDatabase, 
       DepositSlot atmDepositSlot)
    {
       // initialize superclass variables
       super(userAccountNumber, atmBankDatabase);
 
       // initialize references to keypad and deposit slot
-      keypad = atmKeypad;
+
       depositSlot = atmDepositSlot;
    } // end Deposit constructor
 
