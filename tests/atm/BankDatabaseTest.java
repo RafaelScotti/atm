@@ -36,7 +36,8 @@ class BankDatabaseTest {
 		BankDatabase bd = new BankDatabase();
 		double availableNow = bd.getAvailableBalance(12345);
 		double totalNow = bd.getTotalBalance(12345);
-		bd.credit(12345, 100); // 10000 = 100.00
+		
+		bd.credit(12345, 100); 
 		assertEquals(availableNow, bd.getAvailableBalance(12345));
 		assertEquals(totalNow + 100, bd.getTotalBalance(12345));
 	}
@@ -46,6 +47,7 @@ class BankDatabaseTest {
 		BankDatabase bd = new BankDatabase();
 		double availableNow = bd.getAvailableBalance(12345);
 		double totalNow = bd.getTotalBalance(12345);
+	
 		bd.debit(12345, 100);
 		assertEquals(availableNow - 100, bd.getAvailableBalance(12345));
 		assertEquals(totalNow - 100, bd.getTotalBalance(12345));
