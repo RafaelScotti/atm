@@ -94,7 +94,7 @@ public class ATM
 				currentTransaction.execute(); // execute transaction
 				break; 
 			case 2: //withdraw
-				currentTransaction = new Withdrawal(currentAccountNumber, screen, 
+				currentTransaction = new Withdrawal(currentAccountNumber, 
 						bankDatabase, keypad, cashDispenser);
 				currentTransaction.execute(); // execute transaction
 				break; 

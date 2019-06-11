@@ -12,7 +12,7 @@ public class Withdrawal extends Transaction
    private final static int CANCELED = 6;
 
    // Withdrawal constructor
-   public Withdrawal(int userAccountNumber, Screen atmScreen, 
+   public Withdrawal(int userAccountNumber, 
       BankDatabase atmBankDatabase, Keypad atmKeypad, 
       CashDispenser atmCashDispenser)
    {
