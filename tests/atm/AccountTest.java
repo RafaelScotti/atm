@@ -55,10 +55,6 @@ class AccountTest {
 		assertEquals(12345, acc.getAccountNumber());
 	}
 	
-	@Test
-	void testGetAccount() {
-		acc = new Account(12345, 54321, 1000, 1200);
-		assertEquals(acc, acc.getAccount());
-	}
+	
 
 }

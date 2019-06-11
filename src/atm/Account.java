@@ -10,8 +10,7 @@ public class Account
    private double totalBalance; // funds available + pending deposits
 
    // Account constructor initializes attributes
-   public Account(int theAccountNumber, int thePIN, 
-      double theAvailableBalance, double theTotalBalance)
+   public Account(int theAccountNumber, int thePIN, double theAvailableBalance, double theTotalBalance)
    {
       accountNumber = theAccountNumber;
       pin = thePIN;
