@@ -5,13 +5,13 @@ package atm;
 public class Deposit extends Transaction
 {
    private double amount; // amount to deposit
-   private Keypad keypad; // reference to keypad
+   private IKeypad keypad; // reference to keypad
    private DepositSlot depositSlot; // reference to deposit slot
    private final static int CANCELED = 0; // constant for cancel option
 
    // Deposit constructor
-   public Deposit(int userAccountNumber, Screen atmScreen, 
-      BankDatabase atmBankDatabase, Keypad atmKeypad, 
+   public Deposit(int userAccountNumber, IScreen atmScreen, 
+      BankDatabase atmBankDatabase, IKeypad atmKeypad, 
       DepositSlot atmDepositSlot)
    {
       // initialize superclass variables
@@ -27,7 +27,7 @@ public class Deposit extends Transaction
    public void execute()
    {
       BankDatabase bankDatabase = getBankDatabase(); // get reference
-      Screen screen = getScreen(); // get reference
+      IScreen screen = getScreen(); // get reference
 
       amount = promptForDepositAmount(); // get deposit amount from user
 
@@ -69,7 +69,7 @@ public class Deposit extends Transaction
    // prompt user to enter a deposit amount in cents 
    private double promptForDepositAmount()
    {
-      Screen screen = getScreen(); // get reference to screen
+      IScreen screen = getScreen(); // get reference to screen
 
       // display the prompt
       screen.displayMessage("\nPlease enter a deposit amount in " + 

@@ -5,11 +5,11 @@ package atm;
 public abstract class Transaction
 {
    private int accountNumber; // indicates account involved
-   private Screen screen; // ATM's screen
+   private IScreen screen; // ATM's screen
    private BankDatabase bankDatabase; // account info database
 
    // Transaction constructor invoked by subclasses using super()
-   public Transaction(int userAccountNumber, Screen atmScreen, 
+   public Transaction(int userAccountNumber, IScreen atmScreen, 
       BankDatabase atmBankDatabase)
    {
       accountNumber = userAccountNumber;
@@ -24,7 +24,7 @@ public abstract class Transaction
    } // end method getAccountNumber
 
    // return reference to screen
-   public Screen getScreen()
+   public IScreen getScreen()
    {
       return screen;
    } // end method getScreen
