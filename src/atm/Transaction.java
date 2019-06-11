@@ -9,11 +9,11 @@ public abstract class Transaction
    private BankDatabase bankDatabase; // account info database
 
    // Transaction constructor invoked by subclasses using super()
-   public Transaction(int userAccountNumber, Screen atmScreen, 
+   public Transaction(int userAccountNumber, 
       BankDatabase atmBankDatabase)
    {
       accountNumber = userAccountNumber;
-      screen = atmScreen;
+      //screen = Screen.getInstance();
       bankDatabase = atmBankDatabase;
    } // end Transaction constructor
 
@@ -24,10 +24,7 @@ public abstract class Transaction
    } // end method getAccountNumber
 
    // return reference to screen
-   public Screen getScreen()
-   {
-      return screen;
-   } // end method getScreen
+
 
    // return reference to bank database
    public BankDatabase getBankDatabase()

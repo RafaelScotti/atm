@@ -18,7 +18,7 @@ public class ATM
 	{
 		userAuthenticated = false; // user is not authenticated to start
 		currentAccountNumber = 0; // no current account number to start
-		screen = new Screen(); // create screen
+		screen = Screen.getInstance(); // create screen
 		keypad = new Keypad(); // create keypad 
 		cashDispenser = new CashDispenser(); // create cash dispenser
 		depositSlot = new DepositSlot(); // create deposit slot
@@ -90,7 +90,7 @@ public class ATM
 		
 			case 1: // balance
 				currentTransaction = new BalanceInquiry(
-						currentAccountNumber, screen, bankDatabase);
+						currentAccountNumber, bankDatabase);
 				currentTransaction.execute(); // execute transaction
 				break; 
 			case 2: //withdraw
@@ -99,7 +99,7 @@ public class ATM
 				currentTransaction.execute(); // execute transaction
 				break; 
 			case 3: // deposit
-				currentTransaction = new Deposit(currentAccountNumber, screen, 
+				currentTransaction = new Deposit(currentAccountNumber, 
 						bankDatabase, keypad, depositSlot);
 				currentTransaction.execute(); // execute transaction
 				break; 

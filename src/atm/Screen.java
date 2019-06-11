@@ -5,6 +5,19 @@ package atm;
 public class Screen
 {
    // displays a message without a carriage return
+	
+	
+	private static Screen instance;
+	
+	private Screen() {
+		
+	}
+	
+	public static Screen getInstance() {
+	    if (instance == null) instance = new Screen();
+	    return instance;
+	}
+	
    public void displayMessage(String message) 
    {
       System.out.print(message); 
