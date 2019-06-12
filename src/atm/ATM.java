@@ -2,6 +2,11 @@ package atm;
 // ATM.java
 // Represents an automated teller machine
 
+import atm.transaction.BalanceInquiry;
+import atm.transaction.Deposit;
+import atm.transaction.Transaction;
+import atm.transaction.Withdrawal;
+
 public class ATM 
 {
 	private boolean userAuthenticated; // whether user is authenticated
@@ -30,10 +35,8 @@ public class ATM
 	public void run()
 	{
 		// welcome and authenticate user; perform transactions
-		while (true)
-		{
+		while (true){
 			// loop while user is not yet authenticated
-
 			login();
 			performTransactions(); // user is now authenticated 
 			userAuthenticated = false; // reset before next ATM session

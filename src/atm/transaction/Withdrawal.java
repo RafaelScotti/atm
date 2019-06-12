@@ -1,6 +1,11 @@
-package atm;
+package atm.transaction;
 // Withdrawal.java
 // Represents a withdrawal ATM transaction
+
+import atm.BankDatabase;
+import atm.CashDispenser;
+import atm.Keypad;
+import atm.Screen;
 
 public class Withdrawal extends TransactionType
 {

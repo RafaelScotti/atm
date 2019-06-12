@@ -1,5 +1,7 @@
 package atm;
 
+import atm.transaction.Transaction;
+
 public class ATMMenu {
 	
 	private static final int balance = 1;

@@ -1,4 +1,4 @@
-package atm;
+package atm.transaction;
 
 public class Transaction {
 	
