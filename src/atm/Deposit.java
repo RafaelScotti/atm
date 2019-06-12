@@ -6,10 +6,11 @@ public class Deposit extends Transaction
 {
 	private Screen screen;
 	private Keypad keypad;
-
+	private DepositSlot depositSlot;
+	
 	private double amount; // amount to deposit
 
-	private DepositSlot depositSlot; // reference to deposit slot
+	 // reference to deposit slot
 	private final static int CANCELED = 0; // constant for cancel option
 
 	// Deposit constructor
@@ -17,14 +18,10 @@ public class Deposit extends Transaction
 			BankDatabase atmBankDatabase, 
 			DepositSlot atmDepositSlot)
 	{
-		// initialize superclass variables
 		super(userAccountNumber, atmBankDatabase);
-
-		// initialize references to keypad and deposit slot
-
-		depositSlot = atmDepositSlot;
 		this.screen = screen;
-		this.keypad = keypad;;
+		this.keypad = keypad;
+		this.depositSlot = atmDepositSlot;
 	} // end Deposit constructor
 
 	// perform transaction

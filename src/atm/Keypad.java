@@ -9,6 +9,13 @@ public class Keypad
                          
    
    private static Keypad instance;
+   
+
+   private Keypad()
+   {
+      input = new Scanner(System.in);    
+   } 
+   
    public static Keypad getInstance() {
        if (instance == null) instance = new Keypad();
        return instance;
@@ -16,10 +23,7 @@ public class Keypad
    
    
    // no-argument constructor initializes the Scanner
-   private Keypad()
-   {
-      input = new Scanner(System.in);    
-   } // end no-argument Keypad constructor
+  
 
    // return an integer value entered by user 
    public int getInput()
