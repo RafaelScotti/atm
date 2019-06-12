@@ -19,7 +19,7 @@ public class ATM
 		userAuthenticated = false; // user is not authenticated to start
 		currentAccountNumber = 0; // no current account number to start
 		screen = Screen.getInstance(); // create screen
-		keypad = new Keypad(); // create keypad 
+		keypad = Keypad.getInstance(); // create keypad 
 		cashDispenser = new CashDispenser(); // create cash dispenser
 		depositSlot = new DepositSlot(); // create deposit slot
 		bankDatabase = new BankDatabase(); // create acct info database
@@ -99,8 +99,8 @@ public class ATM
 				currentTransaction.execute(); // execute transaction
 				break; 
 			case 3: // deposit
-				currentTransaction = new Deposit(currentAccountNumber, 
-						bankDatabase, keypad, depositSlot);
+				currentTransaction = new Deposit(currentAccountNumber, keypad,
+						screen, bankDatabase, depositSlot);
 				currentTransaction.execute(); // execute transaction
 				break; 
 			case 4: // user chose to terminate session

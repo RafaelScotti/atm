@@ -7,8 +7,16 @@ public class Keypad
 {
    private Scanner input; // reads data from the command line
                          
+   
+   private static Keypad instance;
+   public static Keypad getInstance() {
+       if (instance == null) instance = new Keypad();
+       return instance;
+   }
+   
+   
    // no-argument constructor initializes the Scanner
-   public Keypad()
+   private Keypad()
    {
       input = new Scanner(System.in);    
    } // end no-argument Keypad constructor
