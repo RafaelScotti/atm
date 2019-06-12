@@ -8,11 +8,10 @@ public abstract class Transaction
    private BankDatabase bankDatabase; // account info database
 
    // Transaction constructor invoked by subclasses using super()
-   public Transaction(int userAccountNumber, 
+   public Transaction(int userAccountNumber,
       BankDatabase atmBankDatabase)
    {
       accountNumber = userAccountNumber;
-      //screen = Screen.getInstance();
       bankDatabase = atmBankDatabase;
    } // end Transaction constructor
 

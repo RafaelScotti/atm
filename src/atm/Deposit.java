@@ -14,12 +14,12 @@ public class Deposit extends Transaction
 	private final static int CANCELED = 0; // constant for cancel option
 
 	// Deposit constructor
-	public Deposit(int userAccountNumber, Keypad keypad, Screen screen,
-			BankDatabase atmBankDatabase, 
+	public Deposit(int userAccountNumber, Keypad keypad,
+			BankDatabase atmBankDatabase,
 			DepositSlot atmDepositSlot)
 	{
 		super(userAccountNumber, atmBankDatabase);
-		this.screen = screen;
+		this.screen = Screen.getInstance();
 		this.keypad = keypad;
 		this.depositSlot = atmDepositSlot;
 	} // end Deposit constructor

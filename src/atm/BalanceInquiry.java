@@ -4,11 +4,13 @@ package atm;
 
 public class BalanceInquiry extends Transaction
 {
-   // BalanceInquiry constructor
+	
+   Screen screen;
    public BalanceInquiry(int userAccountNumber, 
       BankDatabase atmBankDatabase)
    {
       super(userAccountNumber, atmBankDatabase);
+      screen = Screen.getInstance();
    } // end BalanceInquiry constructor
 
    // performs the transaction
@@ -17,7 +19,7 @@ public class BalanceInquiry extends Transaction
    {
       // get references to bank database and screen
       BankDatabase bankDatabase = getBankDatabase();
-      Screen screen = Screen.getInstance();
+      //Screen screen = Screen.getInstance();
 
       // get the available balance for the account involved
       double availableBalance = 
