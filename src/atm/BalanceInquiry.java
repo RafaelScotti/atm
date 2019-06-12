@@ -37,6 +37,8 @@ public class BalanceInquiry extends TransactionType
       screen.displayDollarAmount(totalBalance);
       screen.displayMessageLine("");
    } // end method execute
+   
+   
 } // end class BalanceInquiry
 
 

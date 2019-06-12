@@ -58,23 +58,17 @@ public class ATM
 		screen.displayMessage("\nEnter your PIN: "); // prompt for PIN
 		int pin = keypad.getInput(); // input PIN
 
-		// set userAuthenticated to boolean value returned by database
-		userAuthenticated = 
-				bankDatabase.authenticateUser(accountNumber, pin);
+		userAuthenticated = bankDatabase.authenticateUser(accountNumber, pin);
 
-		// check whether authentication succeeded
-		if (userAuthenticated)
-		{
+		if (userAuthenticated) {
 			currentAccountNumber = accountNumber; // save user's account #
 		} // end if
 		else
-			screen.displayMessageLine(
-					"Invalid account number or PIN. Please try again.");
+			screen.displayMessageLine("Invalid account number or PIN. Please try again.");
 	} 
 
 	
 	private void performTransactions() {
-		//Transaction currentTransaction = null;
 		
 		Transaction balance = new Transaction(new BalanceInquiry(currentAccountNumber, bankDatabase));
 		Transaction deposit = new Transaction(new Deposit(currentAccountNumber, keypad, bankDatabase, depositSlot));
@@ -86,25 +80,24 @@ public class ATM
 		{     
 			//SHOW MENU
 			MainMenu.display();
-			int mainMenuSelection = MainMenu.getOption(keypad);
+			int mainMenuSelection = MainMenu.getOption(keypad); //keypad.getInput();
 
-			switch (mainMenuSelection)
-			{
+			switch (mainMenuSelection){
 
-			case 1: // balance
+			case 1: 
 				balance.execute();
 				break; 
-			case 2: //withdraw
+			case 2: 
 				withdraw.execute();
 				break; 
-			case 3: // deposit
+			case 3:
 				deposit.execute();
 				break; 
 			case 4: // user chose to terminate session
 				System.out.println("\nExiting the system...");
 				userExited = true; // this ATM session should end
 				break;
-			default: // user did not enter an integer from 1-4
+			default: 
 				System.out.println(
 						"\nYou did not enter a valid selection. Try again.");
 				break;

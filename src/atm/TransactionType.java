@@ -8,8 +8,7 @@ public abstract class TransactionType
    private BankDatabase bankDatabase; // account info database
 
    // Transaction constructor invoked by subclasses using super()
-   public TransactionType(int userAccountNumber,
-      BankDatabase atmBankDatabase)
+   public TransactionType(int userAccountNumber, BankDatabase atmBankDatabase)
    {
       accountNumber = userAccountNumber;
       bankDatabase = atmBankDatabase;
