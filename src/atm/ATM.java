@@ -22,7 +22,7 @@ public class ATM
 		
 		screen = Screen.getInstance(); // create screen
 		keypad = Keypad.getInstance(); // create keypad 
-		cashDispenser = new CashDispenser(); // create cash dispenser
+		cashDispenser = CashDispenser.getInstance(); // create cash dispenser
 		depositSlot = DepositSlot.getInstance(); // create deposit slot
 		bankDatabase = new BankDatabase(); // create acct info database
 	} // end no-argument ATM constructor

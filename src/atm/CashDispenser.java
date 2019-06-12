@@ -4,12 +4,20 @@ package atm;
 
 public class CashDispenser 
 {
+	
+	private static CashDispenser instance;
+	
+	public static CashDispenser getInstance() {
+		 if (instance == null) instance = new CashDispenser();
+	       return instance;
+	}
+	
    // the default initial number of bills in the cash dispenser
    private final static int INITIAL_COUNT = 500;
    private int count; // number of $20 bills remaining
    
    // no-argument CashDispenser constructor initializes count to default
-   public CashDispenser()
+   private CashDispenser()
    {
       count = INITIAL_COUNT; // set count attribute to default
    } // end CashDispenser constructor
