@@ -33,7 +33,7 @@ public class Deposit extends TransactionType
 	@Override
 	public void execute()
 	{
-		BankDatabase bankDatabase = getBankDatabase(); // get reference
+		//BankDatabase bankDatabase = getBankDatabase(); // get reference
 
 
 		amount = promptForDepositAmount(); // get deposit amount from user
@@ -59,7 +59,7 @@ public class Deposit extends TransactionType
 						"enclosed cash and your checks clear.");
 
 				// credit account to reflect the deposit
-				bankDatabase.credit(getAccountNumber(), amount); 
+				getBankDatabase().credit(getAccountNumber(), amount); 
 			} // end if
 			else // deposit envelope not received
 			{

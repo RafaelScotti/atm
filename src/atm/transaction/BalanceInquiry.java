@@ -15,7 +15,7 @@ public class BalanceInquiry extends TransactionType
    {
       super(userAccountNumber, atmBankDatabase);
       screen = Screen.getInstance();
-       bankDatabase = getBankDatabase();
+      bankDatabase = getBankDatabase();
    } // end BalanceInquiry constructor
 
    // performs the transaction
@@ -23,10 +23,7 @@ public class BalanceInquiry extends TransactionType
    public void execute()
    {
 
-      // get the available balance for the account involved
       double availableBalance = bankDatabase.getAvailableBalance(getAccountNumber());
-
-      // get the total balance for the account involved
       double totalBalance = bankDatabase.getTotalBalance(getAccountNumber());
       
       // display the balance information on the screen
