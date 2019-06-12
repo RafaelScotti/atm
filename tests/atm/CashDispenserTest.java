@@ -14,15 +14,14 @@ class CashDispenserTest {
 
 	@Test
 	void testDispenseCash() {
-		int amount = 40;
-		int billsRequired = amount/20;
-		assertEquals(2, billsRequired);
+		
 	}
 
 	@Test
 	void testIsSufficientCashAvailable() {
-//		int amount = 20;
-//		int count
+		CashDispenser cd = CashDispenser.getInstance();	
+		//it starts with 500 bills
+		assertEquals(true, cd.isSufficientCashAvailable(100));
 	}
 
 }

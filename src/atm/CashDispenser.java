@@ -23,22 +23,23 @@ public class CashDispenser
    } // end CashDispenser constructor
 
    // simulates dispensing of specified amount of cash
-   public void dispenseCash(int amount)
-   {
-      int billsRequired = amount / 20; // number of $20 bills required
-      count -= billsRequired; // update the count of bills
-   } // end method dispenseCash
+   public void dispenseCash(int amount){
+      count -= billsRequired(amount);
+   } 
 
    // indicates whether cash dispenser can dispense desired amount
    public boolean isSufficientCashAvailable(int amount)
    {
-      int billsRequired = amount / 20; // number of $20 bills required
-
-      if (count >= billsRequired )
+      if (count >= billsRequired(amount) )
          return true; // enough bills available
       else 
          return false; // not enough bills available
    } // end method isSufficientCashAvailable
+   
+   public int billsRequired(int amount) {
+	   return amount / 20;
+   }
+   
 } // end class CashDispenser
 
 
