@@ -14,7 +14,7 @@ public class ATM
 	private BankDatabase bankDatabase; // account information database
 
 	// no-argument ATM constructor initializes instance variables
-	public ATM() 
+	public ATM()
 	{
 		userAuthenticated = false; // user is not authenticated to start
 		currentAccountNumber = 0; // no current account number to start
@@ -79,8 +79,8 @@ public class ATM
 		while (!userExited)
 		{     
 			//SHOW MENU
-			MainMenu.display();
-			int mainMenuSelection = MainMenu.getOption(keypad); //keypad.getInput();
+			ATMMenu.display();
+			int mainMenuSelection = ATMMenu.getOption(keypad); //keypad.getInput();
 
 			switch (mainMenuSelection){
 

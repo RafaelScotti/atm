@@ -1,6 +1,6 @@
 package atm;
 
-public class MainMenu {
+public class ATMMenu {
 	
 	private static final int balance = 1;
 	private static final int withdraw = 2;

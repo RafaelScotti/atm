@@ -21,8 +21,7 @@ public abstract class TransactionType
    } // end method getAccountNumber
 
    // return reference to screen
-
-
+  
    // return reference to bank database
    public BankDatabase getBankDatabase()
    {
