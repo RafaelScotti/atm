@@ -2,7 +2,7 @@ package atm;
 // Deposit.java
 // Represents a deposit ATM transaction
 
-public class Deposit extends Transaction
+public class Deposit extends TransactionType
 {
 	private Screen screen;
 	private Keypad keypad;

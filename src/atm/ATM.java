@@ -6,26 +6,25 @@ public class ATM
 {
 	private boolean userAuthenticated; // whether user is authenticated
 	private int currentAccountNumber; // current user's account number
-	
+
 	private Screen screen; // ATM's screen
 	private Keypad keypad; // ATM's keypad
 	private CashDispenser cashDispenser; // ATM's cash dispenser
 	private DepositSlot depositSlot; // ATM's deposit slot
 	private BankDatabase bankDatabase; // account information database
 
-
 	// no-argument ATM constructor initializes instance variables
 	public ATM() 
 	{
 		userAuthenticated = false; // user is not authenticated to start
 		currentAccountNumber = 0; // no current account number to start
-		
-		screen = Screen.getInstance(); // create screen
-		keypad = Keypad.getInstance(); // create keypad 
-		cashDispenser = CashDispenser.getInstance(); // create cash dispenser
-		depositSlot = DepositSlot.getInstance(); // create deposit slot
-		bankDatabase = new BankDatabase(); // create acct info database
-	} // end no-argument ATM constructor
+
+		screen = Screen.getInstance();
+		keypad = Keypad.getInstance(); 
+		cashDispenser = CashDispenser.getInstance(); 
+		depositSlot = DepositSlot.getInstance(); 
+		bankDatabase = new BankDatabase();
+	} 
 
 	// start ATM 
 	public void run()
@@ -34,22 +33,25 @@ public class ATM
 		while (true)
 		{
 			// loop while user is not yet authenticated
-			while (!userAuthenticated) 
-			{
-				screen.displayMessageLine("\nWelcome!"); 
-				authenticateUser(); // authenticate user
-			} // end while
 
+			login();
 			performTransactions(); // user is now authenticated 
 			userAuthenticated = false; // reset before next ATM session
 			currentAccountNumber = 0; // reset before next ATM session 
 			screen.displayMessageLine("\nThank you! Goodbye!");
-		} // end while   
-	} // end method run
+		} 
+	} 
 
-	// attempts to authenticate user against database
-	private void authenticateUser() 
-	{
+
+	public void login() {
+		while (!userAuthenticated) {
+			screen.displayMessageLine("\nWelcome!"); 
+			authenticateUser();
+		}
+	}
+
+
+	private void authenticateUser() {
 
 		screen.displayMessage("\nPlease enter your account number: ");
 		int accountNumber = keypad.getInput(); // input account number
@@ -68,13 +70,16 @@ public class ATM
 		else
 			screen.displayMessageLine(
 					"Invalid account number or PIN. Please try again.");
-	} // end method authenticateUser
+	} 
 
-	// display the main menu and perform transactions
-	private void performTransactions() 
-	{
-
-		Transaction currentTransaction = null;
+	
+	private void performTransactions() {
+		//Transaction currentTransaction = null;
+		
+		Transaction balance = new Transaction(new BalanceInquiry(currentAccountNumber, bankDatabase));
+		Transaction deposit = new Transaction(new Deposit(currentAccountNumber, keypad, bankDatabase, depositSlot));
+		Transaction withdraw = new Transaction(new Withdrawal(currentAccountNumber, bankDatabase, keypad, cashDispenser));
+		
 		boolean userExited = false; // user has not chosen to exit
 
 		while (!userExited)
@@ -82,21 +87,18 @@ public class ATM
 			//SHOW MENU
 			MainMenu.display();
 			int mainMenuSelection = MainMenu.getOption(keypad);
-			
+
 			switch (mainMenuSelection)
 			{
-		
+
 			case 1: // balance
-				currentTransaction = new BalanceInquiry(currentAccountNumber, bankDatabase);
-				currentTransaction.execute(); // execute transaction
+				balance.execute();
 				break; 
 			case 2: //withdraw
-				currentTransaction = new Withdrawal(currentAccountNumber, bankDatabase, keypad, cashDispenser);
-				currentTransaction.execute(); // execute transaction
+				withdraw.execute();
 				break; 
 			case 3: // deposit
-				currentTransaction = new Deposit(currentAccountNumber, keypad, bankDatabase, depositSlot);
-				currentTransaction.execute(); // execute transaction
+				deposit.execute();
 				break; 
 			case 4: // user chose to terminate session
 				System.out.println("\nExiting the system...");
@@ -109,7 +111,7 @@ public class ATM
 			} 
 		} // end while
 	} 
-	
+
 } // end class ATM
 
 

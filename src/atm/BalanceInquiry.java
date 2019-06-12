@@ -2,7 +2,7 @@ package atm;
 // BalanceInquiry.java
 // Represents a balance inquiry ATM transaction
 
-public class BalanceInquiry extends Transaction
+public class BalanceInquiry extends TransactionType
 {
 	
    Screen screen;

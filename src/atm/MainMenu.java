@@ -35,5 +35,23 @@ public class MainMenu {
 		}	
 	}
 	
+	public static int perform(Keypad k, Transaction t) {
+		System.out.println("Enter a choice: ");
+		
+		switch (k.getInput()) {
+		case balance:
+			t.execute();
+		case 2:
+			return withdraw;
+		case 3:
+			return deposit;
+		case 4: 
+			return exit;
+		default:
+			return -1;
+			
+		}	
+	}
+	
 
 }

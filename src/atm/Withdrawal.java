@@ -2,7 +2,7 @@ package atm;
 // Withdrawal.java
 // Represents a withdrawal ATM transaction
 
-public class Withdrawal extends Transaction
+public class Withdrawal extends TransactionType
 {
    private int amount; // amount to withdraw
    private Keypad keypad; // reference to keypad
