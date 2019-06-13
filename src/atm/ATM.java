@@ -28,7 +28,7 @@ public class ATM
 		keypad = Keypad.getInstance(); 
 		cashDispenser = CashDispenser.getInstance(); 
 		depositSlot = DepositSlot.getInstance(); 
-		bankDatabase = new BankDatabase();
+		bankDatabase = BankDatabase.getInstance();
 	} 
 
 	// start ATM 

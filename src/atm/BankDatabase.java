@@ -7,15 +7,15 @@ public class BankDatabase
    private Account accounts[]; // array of Accounts
    private static BankDatabase instance;
    // no-argument BankDatabase constructor initializes accounts
-   public BankDatabase()
+   private BankDatabase()
    {
       accounts = new Account[2]; // just 2 accounts for testing
       accounts[0] = new Account(12345, 54321, 1000.0, 1200.0);
       accounts[1] = new Account(98765, 56789, 200.0, 200.0);  
    } // end no-argument BankDatabase constructor
    
-   synchronized public static BankDatabase getInstance() {
-	   if(instance != null) instance = new BankDatabase();
+   public static BankDatabase getInstance() {
+	   if(instance == null) instance = new BankDatabase();
 	   return instance;
    }
    
