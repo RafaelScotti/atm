@@ -7,38 +7,37 @@ import atm.Screen;
 
 public abstract class TransactionType
 {
-   private int accountNumber; // indicates account involved
-   private BankDatabase bankDatabase; // account info database
-   private Screen screen;
+	private int accountNumber;
+	private BankDatabase bankDatabase; 
+	private Screen screen;
 
-   // Transaction constructor invoked by subclasses using super()
-   public TransactionType(int userAccountNumber, BankDatabase atmBankDatabase, Screen atmScreen)
-   {
-      accountNumber = userAccountNumber;
-      bankDatabase = atmBankDatabase;
-      this.screen = atmScreen;
-   } // end Transaction constructor
+	public TransactionType(int userAccountNumber, BankDatabase atmBankDatabase, Screen atmScreen)
+	{
+		accountNumber = userAccountNumber;
+		bankDatabase = atmBankDatabase;
+		this.screen = atmScreen;
+	} 
 
-   // return account number 
-   public int getAccountNumber()
-   {
-      return accountNumber; 
-   } // end method getAccountNumber
 
-   // return reference to screen
-   public Screen getScreen() {
-	   return screen;
-   }
-  
-   // return reference to bank database
-   public BankDatabase getBankDatabase()
-   {
-      return bankDatabase;
-   } // end method getBankDatabase
+	public int getAccountNumber()
+	{
+		return accountNumber; 
+	}
 
-   // perform the transaction (overridden by each subclass)
-   abstract public void execute();
-} // end class Transaction
+
+	public Screen getScreen() {
+		return screen;
+	}
+
+
+	public BankDatabase getBankDatabase()
+	{
+		return bankDatabase;
+	} 
+
+
+	abstract public void execute();
+} 
 
 
 
