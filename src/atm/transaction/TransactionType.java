@@ -3,17 +3,20 @@ package atm.transaction;
 // Abstract superclass Transaction represents an ATM transaction
 
 import atm.BankDatabase;
+import atm.Screen;
 
 public abstract class TransactionType
 {
    private int accountNumber; // indicates account involved
    private BankDatabase bankDatabase; // account info database
-
+   private Screen screen;
+   
    // Transaction constructor invoked by subclasses using super()
-   public TransactionType(int userAccountNumber, BankDatabase atmBankDatabase)
+   public TransactionType(int userAccountNumber, BankDatabase atmBankDatabase, Screen atmScreen)
    {
       accountNumber = userAccountNumber;
       bankDatabase = atmBankDatabase;
+      screen = atmScreen;
    } // end Transaction constructor
 
    // return account number 
@@ -22,7 +25,9 @@ public abstract class TransactionType
       return accountNumber; 
    } // end method getAccountNumber
 
-   // return reference to screen
+   public Screen getScreen() {
+	   return screen;
+   }
   
    // return reference to bank database
    public BankDatabase getBankDatabase()

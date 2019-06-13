@@ -7,14 +7,11 @@ import atm.Screen;
 
 public class BalanceInquiry extends TransactionType
 {
-	
-   Screen screen;
-   
+
    public BalanceInquiry(int userAccountNumber, 
-      BankDatabase atmBankDatabase)
+      BankDatabase atmBankDatabase, Screen screen)
    {
-      super(userAccountNumber, atmBankDatabase);
-      screen = Screen.getInstance();
+      super(userAccountNumber, atmBankDatabase, screen);
       
    } // end BalanceInquiry constructor
 
@@ -25,12 +22,12 @@ public class BalanceInquiry extends TransactionType
       double totalBalance = getBankDatabase().getTotalBalance(getAccountNumber());
       
       // display the balance information on the screen
-      screen.displayMessageLine("\nBalance Information:");
-      screen.displayMessage(" - Available balance: "); 
-      screen.displayDollarAmount(availableBalance);
-      screen.displayMessage("\n - Total balance:     ");
-      screen.displayDollarAmount(totalBalance);
-      screen.displayMessageLine("");
+      getScreen().displayMessageLine("\nBalance Information:");
+      getScreen().displayMessage(" - Available balance: "); 
+      getScreen().displayDollarAmount(availableBalance);
+      getScreen().displayMessage("\n - Total balance:     ");
+      getScreen().displayDollarAmount(totalBalance);
+      getScreen().displayMessageLine("");
    } // end method execute
    
    
