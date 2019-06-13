@@ -33,9 +33,6 @@ public class Deposit extends TransactionType
 	@Override
 	public void execute()
 	{
-		//BankDatabase bankDatabase = getBankDatabase(); // get reference
-
-
 		amount = promptForDepositAmount(); // get deposit amount from user
 
 		// check whether user entered a deposit amount or canceled
