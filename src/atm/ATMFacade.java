@@ -12,33 +12,23 @@ import atm.transaction.Deposit;
 import atm.transaction.Transaction;
 import atm.transaction.Withdrawal;
 
-public class ATM 
+public class ATMFacade 
 {
 	private boolean userAuthenticated; // whether user is authenticated
 	private int currentAccountNumber; // current user's account number
-
-	private Screen screen; // ATM's screen
-	private Keypad keypad; // ATM's keypad
-	private CashDispenser cashDispenser; // ATM's cash dispenser
-	private DepositSlot depositSlot; // ATM's deposit slot
 	private BankDatabase bankDatabase; // account information database
 
-	private Transaction balance;
-	private Transaction deposit;
-	private Transaction withdraw;
 
 	Session session;
-
+	TransactionCreator transactionCreator;
+	
 	// no-argument ATM constructor initializes instance variables
-	public ATM()
+	public ATMFacade()
 	{
-		userAuthenticated = false; // user is not authenticated to start
-		currentAccountNumber = 0; // no current account number to start
-		screen = Screen.getInstance();
-		keypad = Keypad.getInstance(); 
-		cashDispenser = CashDispenser.getInstance(); 
-		depositSlot = DepositSlot.getInstance(); 
-		bankDatabase = BankDatabase.getInstance();
+		this.userAuthenticated = false; // user is not authenticated to start
+		this.currentAccountNumber = 0; // no current account number to start
+		this.bankDatabase = BankDatabase.getInstance();
+		
 
 	} 
 
@@ -47,54 +37,24 @@ public class ATM
 	{
 		// welcome and authenticate user; perform transactions
 		while (true){
-			session = new Session(bankDatabase, screen, keypad);
+			session = new Session(bankDatabase);
 			session.open();
-
+					
 			this.currentAccountNumber = session.getCurrentAccountNumber();
 
-			performTransactions(); // user is now authenticated 
+			transactionCreator = new TransactionCreator(bankDatabase);
+			transactionCreator.makeTransaction(currentAccountNumber);
 
 			this.userAuthenticated = false; // reset before next ATM session
 			currentAccountNumber = 0; // reset before next ATM session 
-
 			session.close();
-			screen.displayMessageLine("\nThank you! Goodbye!");
+			
+			
 		} 
 	} 
 
 
-	private void performTransactions() {
-		
-		balance = new Transaction(new BalanceInquiry(currentAccountNumber, bankDatabase, screen));
-		deposit = new Transaction(new Deposit(currentAccountNumber, keypad, bankDatabase, depositSlot, screen));
-		withdraw = new Transaction(new Withdrawal(currentAccountNumber, bankDatabase, keypad, cashDispenser, screen));
-		
-		boolean userExited = false; // user has not chosen to exit
-		while (!userExited)	{     
-			ATMMenu.display();
-			int mainMenuSelection = keypad.getInput(); //keypad.getInput();
 
-			switch (mainMenuSelection){
-
-			case 1: 
-				balance.execute();
-				break; 
-			case 2: 
-				withdraw.execute();
-				break; 
-			case 3:
-				deposit.execute();
-				break; 
-			case 4: 
-				System.out.println("\nExiting the system...");
-				userExited = true;
-				break;
-			default: 
-				System.out.println("\nYou did not enter a valid selection. Try again.");
-				break;
-			} 
-		} 
-	} 
 
 } 
 

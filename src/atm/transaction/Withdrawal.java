@@ -10,22 +10,15 @@ import atm.hardware.Screen;
 public class Withdrawal extends TransactionType
 {
    private int amount; // amount to withdraw
-   private Keypad keypad; // reference to keypad
-   private CashDispenser cashDispenser; // reference to cash dispenser
 
    // constant corresponding to menu option to cancel
    private final static int CANCELED = 6;
 
    public Withdrawal(int userAccountNumber, 
-      BankDatabase atmBankDatabase, Keypad atmKeypad, 
-      CashDispenser atmCashDispenser, Screen screen)
+      BankDatabase atmBankDatabase)
    {
       // initialize superclass variables
-      super(userAccountNumber,  atmBankDatabase, screen);
-      
-      // initialize references to keypad and cash dispenser
-      keypad = atmKeypad;
-      cashDispenser = atmCashDispenser;
+      super(userAccountNumber,  atmBankDatabase);
    } 
 
    @Override
@@ -52,32 +45,32 @@ public class Withdrawal extends TransactionType
             if (amount <= availableBalance)
             {   
                // check whether the cash dispenser has enough money
-               if (cashDispenser.isSufficientCashAvailable(amount))
+               if (CashDispenser.getInstance().isSufficientCashAvailable(amount))
                {
                   // update the account involved to reflect the withdrawal
                   getBankDatabase().debit(getAccountNumber(), amount);
                   
-                  cashDispenser.dispenseCash(amount); // dispense cash
+                  CashDispenser.getInstance().dispenseCash(amount); // dispense cash
                   cashDispensed = true; // cash was dispensed
 
-                  getScreen().displayMessageLine("\nYour cash has been" +
+                  Screen.getInstance().displayMessageLine("\nYour cash has been" +
                      " dispensed. Please take your cash now.");
                } // end if
                else // cash dispenser does not have enough cash
-            	   getScreen().displayMessageLine(
+            	   Screen.getInstance().displayMessageLine(
                      "\nInsufficient cash available in the ATM." +
                      "\n\nPlease choose a smaller amount.");
             } // end if
             else // not enough money available in user's account
             {
-            	getScreen().displayMessageLine(
+            	Screen.getInstance().displayMessageLine(
                   "\nInsufficient funds in your account." +
                   "\n\nPlease choose a smaller amount."); 
             } // end else
          } // end if
          else // user chose cancel menu option 
          {
-        	 getScreen().displayMessageLine("\nCanceling transaction...");
+        	 Screen.getInstance().displayMessageLine("\nCanceling transaction...");
             return; // return to main menu because user canceled
          } // end else
       } while (!cashDispensed);
@@ -99,16 +92,16 @@ public class Withdrawal extends TransactionType
       while (userChoice == 0)
       {
          // display the menu
-    	  getScreen().displayMessageLine("\nWithdrawal Menu:");
-    	  getScreen().displayMessageLine("1 - $20");
-    	  getScreen().displayMessageLine("2 - $40");
-    	  getScreen().displayMessageLine("3 - $60");
-    	  getScreen().displayMessageLine("4 - $100");
-    	  getScreen().displayMessageLine("5 - $200");
-    	  getScreen().displayMessageLine("6 - Cancel transaction");
-    	  getScreen().displayMessage("\nChoose a withdrawal amount: ");
+    	  Screen.getInstance().displayMessageLine("\nWithdrawal Menu:");
+    	  Screen.getInstance().displayMessageLine("1 - $20");
+    	  Screen.getInstance().displayMessageLine("2 - $40");
+    	  Screen.getInstance().displayMessageLine("3 - $60");
+    	  Screen.getInstance().displayMessageLine("4 - $100");
+    	  Screen.getInstance().displayMessageLine("5 - $200");
+    	  Screen.getInstance().displayMessageLine("6 - Cancel transaction");
+    	  Screen.getInstance().displayMessage("\nChoose a withdrawal amount: ");
 
-         int input = keypad.getInput(); // get user input through keypad
+         int input = Keypad.getInstance().getInput(); // get user input through keypad
 
          // determine how to proceed based on the input value
          switch (input)
@@ -124,7 +117,7 @@ public class Withdrawal extends TransactionType
                userChoice = CANCELED; // save user's choice
                break;
             default: // the user did not enter a value from 1-6
-            	getScreen().displayMessageLine(
+            	Screen.getInstance().displayMessageLine(
                   "\nInvalid selection. Try again.");
          } // end switch
       } // end while

@@ -7,7 +7,7 @@ public class ATMCaseStudy
    // main method creates and runs the ATM
    public static void main(String[] args)
    {
-      ATM theATM = new ATM();    
+      ATMFacade theATM = new ATMFacade();    
       theATM.run();
    } // end main
 } // end class ATMCaseStudy 
