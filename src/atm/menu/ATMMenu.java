@@ -1,4 +1,4 @@
-package atm;
+package atm.menu;
 
 import atm.hardware.Screen;
 

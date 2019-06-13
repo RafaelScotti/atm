@@ -1,8 +1,6 @@
-package atm.hardware;
+package atm;
 // BankDatabase.java
 // Represents the bank account information database 
-
-import atm.Account;
 
 public class BankDatabase 
 {

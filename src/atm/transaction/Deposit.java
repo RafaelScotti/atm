@@ -2,7 +2,7 @@ package atm.transaction;
 // Deposit.java
 // Represents a deposit ATM transaction
 
-import atm.hardware.BankDatabase;
+import atm.BankDatabase;
 import atm.hardware.DepositSlot;
 import atm.hardware.Keypad;
 import atm.hardware.Screen;

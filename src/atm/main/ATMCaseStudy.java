@@ -1,6 +1,8 @@
-package atm;
+package atm.main;
 // ATMCaseStudy.java
 // Driver program for the ATM case study
+
+import atm.ATMFacade;
 
 public class ATMCaseStudy
 {

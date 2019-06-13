@@ -2,7 +2,7 @@ package atm.transaction;
 // BalanceInquiry.java
 // Represents a balance inquiry ATM transaction
 
-import atm.hardware.BankDatabase;
+import atm.BankDatabase;
 import atm.hardware.Screen;
 
 public class BalanceInquiry extends TransactionType

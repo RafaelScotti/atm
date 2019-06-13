@@ -1,7 +1,7 @@
 package atm;
 
-import atm.hardware.BankDatabase;
 import atm.hardware.Keypad;
+import atm.menu.ATMMenu;
 import atm.transaction.BalanceInquiry;
 import atm.transaction.Deposit;
 import atm.transaction.Transaction;

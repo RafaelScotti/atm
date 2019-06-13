@@ -1,6 +1,5 @@
 package atm;
 
-import atm.hardware.BankDatabase;
 import atm.hardware.Keypad;
 import atm.hardware.Screen;
 
