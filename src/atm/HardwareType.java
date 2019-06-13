@@ -1,7 +1,9 @@
 package atm;
 
-public abstract class HardwareType {
-	abstract HardwareType getInstance();
+public interface HardwareType {
+		static public HardwareType getInstance() {
+			return null;
+		}
 	
 	
 }

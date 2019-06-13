@@ -3,7 +3,7 @@ package atm;
 // Represents the keypad of the ATM
 import java.util.Scanner; // program uses Scanner to obtain user input
 
-public class Keypad extends HardwareType
+public class Keypad implements HardwareType
 {
    private Scanner input; // reads data from the command line
                          

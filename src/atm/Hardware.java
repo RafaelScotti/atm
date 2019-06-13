@@ -6,4 +6,8 @@ public class Hardware {
 	public Hardware(HardwareType ht) {
 		this.ht = ht;
 	}
+	
+	HardwareType getInstace() {
+		return HardwareType.getInstance();
+	}
 }
