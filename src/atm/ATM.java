@@ -46,12 +46,6 @@ public class ATM
 			session.open();
 
 			this.currentAccountNumber = session.getCurrentAccountNumber();
-			
-
-			balance = new Transaction(new BalanceInquiry(currentAccountNumber, bankDatabase, screen));
-			deposit = new Transaction(new Deposit(currentAccountNumber, keypad, bankDatabase, depositSlot, screen));
-			withdraw = new Transaction(new Withdrawal(currentAccountNumber, bankDatabase, keypad, cashDispenser, screen));
-
 
 			performTransactions(); // user is now authenticated 
 
@@ -65,12 +59,15 @@ public class ATM
 
 
 	private void performTransactions() {
-
-		boolean userExited = false; // user has not chosen to exit
 		
+		balance = new Transaction(new BalanceInquiry(currentAccountNumber, bankDatabase, screen));
+		deposit = new Transaction(new Deposit(currentAccountNumber, keypad, bankDatabase, depositSlot, screen));
+		withdraw = new Transaction(new Withdrawal(currentAccountNumber, bankDatabase, keypad, cashDispenser, screen));
+		
+		boolean userExited = false; // user has not chosen to exit
 		while (!userExited)	{     
 			ATMMenu.display();
-			int mainMenuSelection = ATMMenu.getOption(keypad); //keypad.getInput();
+			int mainMenuSelection = keypad.getInput(); //keypad.getInput();
 
 			switch (mainMenuSelection){
 
