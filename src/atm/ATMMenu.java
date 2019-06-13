@@ -1,5 +1,6 @@
 package atm;
 
+import atm.hardware.Screen;
 import atm.transaction.Transaction;
 
 public class ATMMenu {

@@ -2,8 +2,8 @@ package atm.transaction;
 // Transaction.java
 // Abstract superclass Transaction represents an ATM transaction
 
-import atm.BankDatabase;
-import atm.Screen;
+import atm.hardware.BankDatabase;
+import atm.hardware.Screen;
 
 public abstract class TransactionType
 {

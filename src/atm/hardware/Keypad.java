@@ -1,40 +1,36 @@
-package atm;
-// Screen.java
-// Represents the screen of the ATM
+package atm.hardware;
+// Keypad.java
+// Represents the keypad of the ATM
+import java.util.Scanner; // program uses Scanner to obtain user input
 
-public class Screen
+public class Keypad
 {
-   // displays a message without a carriage return
-	
-	
-	private static Screen instance;
-	
-	private Screen() {
-		
-	}
-	
-	public static Screen getInstance() {
-	    if (instance == null) instance = new Screen();
-	    return instance;
-	}
-	
-   public void displayMessage(String message) 
-   {
-      System.out.print(message); 
-   } // end method displayMessage
+   private Scanner input; // reads data from the command line
+                         
+   
+   private static Keypad instance;
+   
 
-   // display a message with a carriage return
-   public void displayMessageLine(String message) 
+   private Keypad()
    {
-      System.out.println(message);   
-   } // end method displayMessageLine
+      input = new Scanner(System.in);    
+   } 
+   
+   public static Keypad getInstance() {
+       if (instance == null) instance = new Keypad();
+       return instance;
+   }
+   
+   
+   // no-argument constructor initializes the Scanner
+  
 
-   // display a dollar amount
-   public void displayDollarAmount(double amount)
+   // return an integer value entered by user 
+   public int getInput()
    {
-      System.out.printf("$%,.2f", amount);   
-   } // end method displayDollarAmount 
-} // end class Screen
+      return input.nextInt(); // we assume that user enters an integer  
+   } // end method getInput
+} // end class Keypad  
 
 
 

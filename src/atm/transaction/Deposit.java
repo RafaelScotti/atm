@@ -2,10 +2,10 @@ package atm.transaction;
 // Deposit.java
 // Represents a deposit ATM transaction
 
-import atm.BankDatabase;
-import atm.DepositSlot;
-import atm.Keypad;
-import atm.Screen;
+import atm.hardware.BankDatabase;
+import atm.hardware.DepositSlot;
+import atm.hardware.Keypad;
+import atm.hardware.Screen;
 
 public class Deposit extends TransactionType
 {
