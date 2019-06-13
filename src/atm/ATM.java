@@ -73,9 +73,9 @@ public class ATM
 	
 	private void performTransactions() {
 		
-		Transaction balance = new Transaction(new BalanceInquiry(currentAccountNumber, bankDatabase));
-		Transaction deposit = new Transaction(new Deposit(currentAccountNumber, keypad, bankDatabase, depositSlot));
-		Transaction withdraw = new Transaction(new Withdrawal(currentAccountNumber, bankDatabase, keypad, cashDispenser));
+		Transaction balance = new Transaction(new BalanceInquiry(currentAccountNumber, bankDatabase, screen));
+		Transaction deposit = new Transaction(new Deposit(currentAccountNumber, keypad, bankDatabase, depositSlot, screen));
+		Transaction withdraw = new Transaction(new Withdrawal(currentAccountNumber, bankDatabase, keypad, cashDispenser, screen));
 		
 		boolean userExited = false; // user has not chosen to exit
 
