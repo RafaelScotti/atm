@@ -2,14 +2,6 @@ package atm;
 // ATM.java
 // Represents an automated teller machine
 
-import atm.hardware.CashDispenser;
-import atm.hardware.DepositSlot;
-import atm.hardware.Keypad;
-import atm.hardware.Screen;
-import atm.transaction.BalanceInquiry;
-import atm.transaction.Deposit;
-import atm.transaction.Transaction;
-import atm.transaction.Withdrawal;
 
 public class ATMFacade 
 {
