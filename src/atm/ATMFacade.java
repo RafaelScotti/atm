@@ -14,22 +14,15 @@ import atm.transaction.Withdrawal;
 
 public class ATMFacade 
 {
-	private boolean userAuthenticated; // whether user is authenticated
-	private int currentAccountNumber; // current user's account number
+
 	private BankDatabase bankDatabase; // account information database
-
-
 	Session session;
 	TransactionCreator transactionCreator;
 	
 	// no-argument ATM constructor initializes instance variables
 	public ATMFacade()
 	{
-		this.userAuthenticated = false; // user is not authenticated to start
-		this.currentAccountNumber = 0; // no current account number to start
 		this.bankDatabase = BankDatabase.getInstance();
-		
-
 	} 
 
 	// start ATM 
@@ -39,16 +32,11 @@ public class ATMFacade
 		while (true){
 			session = new Session(bankDatabase);
 			session.open();
-					
-			this.currentAccountNumber = session.getCurrentAccountNumber();
 
 			transactionCreator = new TransactionCreator(bankDatabase);
-			transactionCreator.makeTransaction(currentAccountNumber);
-
-			this.userAuthenticated = false; // reset before next ATM session
-			currentAccountNumber = 0; // reset before next ATM session 
+			transactionCreator.makeTransaction(session.getCurrentAccountNumber());
+ 
 			session.close();
-			
 			
 		} 
 	} 

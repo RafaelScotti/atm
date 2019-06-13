@@ -24,6 +24,9 @@ public class Session {
 		Screen.getInstance().displayMessageLine("\nThank you! Goodbye!");
 	}
 	
+	public int getCurrentAccountNumber() {
+		return this.currentAccountNumber;
+	}
 	
 	public void login() {
 		while (!userAuthenticated) {
@@ -46,9 +49,7 @@ public class Session {
 		
 	}
 
-	public int getCurrentAccountNumber() {
-		return this.currentAccountNumber;
-	}
+	
 	
 
 }

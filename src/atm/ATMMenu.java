@@ -1,7 +1,6 @@
 package atm;
 
 import atm.hardware.Screen;
-import atm.transaction.Transaction;
 
 public class ATMMenu {
 	
@@ -12,10 +11,6 @@ public class ATMMenu {
 		Screen.getInstance().displayMessageLine("3 - Deposit funds");
 		Screen.getInstance().displayMessageLine("4 - Exit\n");
 		
-		
 	}
-	
-	
-	
 
 }
