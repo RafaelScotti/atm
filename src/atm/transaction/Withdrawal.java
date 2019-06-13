@@ -60,7 +60,6 @@ public class Withdrawal extends TransactionType
                   cashDispenser.dispenseCash(amount); // dispense cash
                   cashDispensed = true; // cash was dispensed
 
-                  // instruct user to take cash
                   getScreen().displayMessageLine("\nYour cash has been" +
                      " dispensed. Please take your cash now.");
                } // end if

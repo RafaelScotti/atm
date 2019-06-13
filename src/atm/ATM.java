@@ -18,6 +18,12 @@ public class ATM
 	private DepositSlot depositSlot; // ATM's deposit slot
 	private BankDatabase bankDatabase; // account information database
 
+	private Transaction balance;
+	private Transaction deposit;
+	private Transaction withdraw;
+
+	Session session;
+
 	// no-argument ATM constructor initializes instance variables
 	public ATM()
 	{
@@ -28,6 +34,7 @@ public class ATM
 		cashDispenser = CashDispenser.getInstance(); 
 		depositSlot = DepositSlot.getInstance(); 
 		bankDatabase = BankDatabase.getInstance();
+
 	} 
 
 	// start ATM 
@@ -35,73 +42,54 @@ public class ATM
 	{
 		// welcome and authenticate user; perform transactions
 		while (true){
-			// loop while user is not yet authenticated
-			login();
+			session = new Session(bankDatabase, screen, keypad);
+			session.open();
+
+			this.currentAccountNumber = session.getCurrentAccountNumber();
+			
+
+			balance = new Transaction(new BalanceInquiry(currentAccountNumber, bankDatabase, screen));
+			deposit = new Transaction(new Deposit(currentAccountNumber, keypad, bankDatabase, depositSlot, screen));
+			withdraw = new Transaction(new Withdrawal(currentAccountNumber, bankDatabase, keypad, cashDispenser, screen));
+
+
 			performTransactions(); // user is now authenticated 
-			userAuthenticated = false; // reset before next ATM session
+
+			this.userAuthenticated = false; // reset before next ATM session
 			currentAccountNumber = 0; // reset before next ATM session 
+
+			session.close();
 			screen.displayMessageLine("\nThank you! Goodbye!");
 		} 
 	} 
 
 
-	public void login() {
-		while (!userAuthenticated) {
-			screen.displayMessageLine("\nWelcome!"); 
-			authenticateUser();
-		}
-	}
-
-
-	private void authenticateUser() {
-
-		screen.displayMessage("\nPlease enter your account number: ");
-		int accountNumber = keypad.getInput(); // input account number
-		screen.displayMessage("\nEnter your PIN: "); // prompt for PIN
-		int pin = keypad.getInput(); // input PIN
-
-		userAuthenticated = bankDatabase.authenticateUser(accountNumber, pin);
-
-		if (userAuthenticated) {
-			currentAccountNumber = accountNumber; // save user's account #
-		} // end if
-		else
-			screen.displayMessageLine("Invalid account number or PIN. Please try again.");
-	} 
-
-	
 	private void performTransactions() {
-		
-		Transaction balance = new Transaction(new BalanceInquiry(currentAccountNumber, bankDatabase, screen));
-		Transaction deposit = new Transaction(new Deposit(currentAccountNumber, keypad, bankDatabase, depositSlot, screen));
-		Transaction withdraw = new Transaction(new Withdrawal(currentAccountNumber, bankDatabase, keypad, cashDispenser, screen));
-		
-		boolean userExited = false; // user has not chosen to exit
 
+		boolean userExited = false; // user has not chosen to exit
+		
 		while (!userExited)	{     
-			
 			ATMMenu.display();
-			
 			int mainMenuSelection = ATMMenu.getOption(keypad); //keypad.getInput();
 
 			switch (mainMenuSelection){
 
-				case 1: 
-					balance.execute();
-					break; 
-				case 2: 
-					withdraw.execute();
-					break; 
-				case 3:
-					deposit.execute();
-					break; 
-				case 4: 
-					System.out.println("\nExiting the system...");
-					userExited = true;
-					break;
-				default: 
-					System.out.println("\nYou did not enter a valid selection. Try again.");
-					break;
+			case 1: 
+				balance.execute();
+				break; 
+			case 2: 
+				withdraw.execute();
+				break; 
+			case 3:
+				deposit.execute();
+				break; 
+			case 4: 
+				System.out.println("\nExiting the system...");
+				userExited = true;
+				break;
+			default: 
+				System.out.println("\nYou did not enter a valid selection. Try again.");
+				break;
 			} 
 		} 
 	} 
