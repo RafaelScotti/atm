@@ -8,8 +8,10 @@ import atm.transaction.Withdrawal;
 public class ATMSystem {
 	public ATMSystem() {
 		
+		Hardware keypad = new Hardware();
+		
 		Screen screen = Screen.getInstance();
-		Keypad keypad = Keypad.getInstance();
+		//Keypad keypad = Keypad.getInstance();
 		CashDispenser cashDispenser = CashDispenser.getInstance(); 
 		DepositSlot depositSlot = DepositSlot.getInstance(); 
 		BankDatabase bankDatabase = new BankDatabase();

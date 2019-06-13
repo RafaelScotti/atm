@@ -71,42 +71,7 @@ public class ATM
 	} 
 
 	
-	private void performTransactions() {
-		
-		Transaction balance = new Transaction(new BalanceInquiry(currentAccountNumber, bankDatabase, screen));
-		Transaction deposit = new Transaction(new Deposit(currentAccountNumber, keypad, bankDatabase, depositSlot, screen));
-		Transaction withdraw = new Transaction(new Withdrawal(currentAccountNumber, bankDatabase, keypad, cashDispenser, screen));
-		
-		boolean userExited = false; // user has not chosen to exit
-
-		while (!userExited)
-		{     
-			//SHOW MENU
-			ATMMenu.display();
-			int mainMenuSelection = ATMMenu.getOption(keypad); //keypad.getInput();
-
-			switch (mainMenuSelection){
-
-			case 1: 
-				balance.execute();
-				break; 
-			case 2: 
-				withdraw.execute();
-				break; 
-			case 3:
-				deposit.execute();
-				break; 
-			case 4: // user chose to terminate session
-				System.out.println("\nExiting the system...");
-				userExited = true; // this ATM session should end
-				break;
-			default: 
-				System.out.println(
-						"\nYou did not enter a valid selection. Try again.");
-				break;
-			} 
-		} // end while
-	} 
+	
 
 } // end class ATM
 
