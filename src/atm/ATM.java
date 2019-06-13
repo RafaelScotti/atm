@@ -2,6 +2,8 @@ package atm;
 // ATM.java
 // Represents an automated teller machine
 
+import atm.hardware.HardwareType;
+import atm.hardware.Screen;
 import atm.transaction.BalanceInquiry;
 import atm.transaction.Deposit;
 import atm.transaction.Transaction;
@@ -12,7 +14,7 @@ public class ATM
 	private boolean userAuthenticated; // whether user is authenticated
 	private int currentAccountNumber; // current user's account number
 
-	private Screen screen; // ATM's screen
+	private HardwareType screen = new Screen(); // ATM's screen
 	private Keypad keypad; // ATM's keypad
 	private CashDispenser cashDispenser; // ATM's cash dispenser
 	private DepositSlot depositSlot; // ATM's deposit slot
@@ -27,6 +29,8 @@ public class ATM
 	// no-argument ATM constructor initializes instance variables
 	public ATM()
 	{
+		
+		
 		userAuthenticated = false; // user is not authenticated to start
 		currentAccountNumber = 0; // no current account number to start
 		screen = Screen.getInstance();

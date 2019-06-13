@@ -1,4 +1,4 @@
-package atm;
+package atm.hardware;
 // DepositSlot.java
 // Represents the deposit slot of the ATM
 

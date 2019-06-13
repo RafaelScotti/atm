@@ -1,23 +1,16 @@
-package atm;
+package atm.hardware;
 // CashDispenser.java
 // Represents the cash dispenser of the ATM
 
-public class CashDispenser 
+public class CashDispenser extends HardwareType
 {
-	
-	private static CashDispenser instance;
-	
-	public static CashDispenser getInstance() {
-		 if (instance == null) instance = new CashDispenser();
-	       return instance;
-	}
 	
    // the default initial number of bills in the cash dispenser
    private final static int INITIAL_COUNT = 500;
    private int count; // number of $20 bills remaining
    
    // no-argument CashDispenser constructor initializes count to default
-   private CashDispenser()
+   public CashDispenser()
    {
       count = INITIAL_COUNT; // set count attribute to default
    } // end CashDispenser constructor

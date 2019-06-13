@@ -1,22 +1,17 @@
-package atm;
+package atm.hardware;
 // Screen.java
 // Represents the screen of the ATM
 
-public class Screen
+public class Screen extends HardwareType
 {
    // displays a message without a carriage return
 	
+
 	
-	private static Screen instance;
-	
-	private Screen() {
+	public Screen() {
 		
 	}
 	
-	public static Screen getInstance() {
-	    if (instance == null) instance = new Screen();
-	    return instance;
-	}
 	
    public void displayMessage(String message) 
    {
